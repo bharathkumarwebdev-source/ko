@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions - Ko-Milk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="terms.css">
+   <style>
+    :root {
+      --primary-color: #0099cc;
+      --secondary-color: #ffcc00;
+      --accent-color: #ff3333;
+      --dark-color: #005b80;
+      --light-bg: #f8f9fa;
+      --success-color: #28a745;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+    }
+    
+    /* Top Header */
+    .top-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 0;
+    }
+    
+    .brand-logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    
+    .slogan {
+      font-style: italic;
+      font-size: 1rem;
+    }
+    
+    .order-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .order-btn:hover {
+      background-color: #e62e2e;
+      transform: translateY(-2px);
+    }
+    
+    .login-btn, .cart-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 15px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s;
+      margin-left: 10px;
+    }
+    
+    .login-btn:hover, .cart-btn:hover {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    /* Navigation Header */
+    .nav-header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin: 0 10px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: var(--primary-color);
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .navbar-nav .nav-link.active {
+      color: var(--primary-color);
+    }
+    
+    .navbar-nav .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+      padding: 60px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary-color);
+    }
+    
+    .page-title {
+      font-weight: 800;
+      color: var(--dark-color);
+      font-size: 2.5rem;
+    }
+    
+    .breadcrumb {
+      background-color: transparent;
+      margin-bottom: 0;
+      justify-content: center;
+    }
+    
+    .breadcrumb-item a {
+      color: var(--dark-color);
+      text-decoration: none;
+    }
+    
+    .breadcrumb-item.active {
+      color: var(--primary-color);
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .contact-form {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .form-control, .form-select {
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      font-size: 1rem;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(0, 153, 204, 0.25);
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 8px;
+    }
+    
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
+    .btn-submit:hover {
+      background-color: var(--dark-color);
+      transform: translateY(-2px);
+    }
+    
+    .contact-info {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+    
+    .info-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-right: 15px;
+      margin-top: 5px;
+    }
+    
+    .info-content h4 {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    
+    .info-content p {
+      color: #555;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+    
+    .map-container {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 300px;
+      margin-top: 30px;
+    }
+    
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 1050;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .cart-sidebar.active {
+      right: 0;
+    }
+    
+    .cart-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cart-items {
+      padding: 15px;
+    }
+    
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    .cart-item-details {
+      flex-grow: 1;
+      margin-left: 15px;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+    }
+    
+    .cart-item-price {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+    
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+    }
+    
+    .quantity-btn {
+      background-color: #f0f0f0;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .quantity-value {
+      margin: 0 10px;
+    }
+    
+    .cart-footer {
+      padding: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .checkout-btn {
+      background-color: var(--success-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+    
+    .checkout-btn:hover {
+      background-color: #218838;
+    }
+    
+    .empty-cart {
+      text-align: center;
+      padding: 30px 15px;
+      color: #6c757d;
+    }
+    
+    /* Login Modal */
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .nav-tabs .nav-link {
+      color: var(--dark-color);
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-color);
+      border-color: var(--dark-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .navbar-nav .nav-link {
+        margin: 5px 0;
+      }
+      
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+      
+      .contact-section {
+        padding: 50px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <div class="brand-logo">KO-MILK</div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="slogan">Milk as Milked, Delivered as Milked</div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button class="order-btn">Order Supply Now</button>
+          <button class="login-btn" onclick="openLogin()">Login</button>
+          <button class="cart-btn position-relative" onclick="toggleCart()">
+            <i class="bi bi-cart"></i>
+            <span class="cart-badge" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Header -->
+  <nav class="navbar navbar-expand-lg nav-header">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="milk.html">Milk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactus.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="careers.html">Careers</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link active" href="/terms.html">Terms & Conditions</a>
+          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" href="writeus.html">Write to Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Terms and Conditions</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="ind3.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Terms & Conditions</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Terms Content -->
+  <div class="container my-5">
+    <div class="terms-container">
+      <h2 class="main-title text-center">TERMS AND CONDITIONS</h2>
+      <h4 class="sub-title text-center">Terms between Ko-Milk and Customers</h4>
+
+      <ul class="">
+        <li>Ko-Milk delivers milk on two scheduled slots (morning/evening). The availability of slots to be confirmed by Ko-Milk itself.</li>
+
+        <li>Time Management is a very essential task for our delivery executives. We cannot spend more than two minutes at customers doorsteps.</li>
+
+        <li>Subscription and payments need to be done by digital format only. Ko-Milk not allows any cash payments direct to our delivery executives.</li>
+
+        <li>Ko-Milk serves based on financial commitments. So subscription charge is essential to get a regular supply. And it will kept on your account wallet.</li>
+
+        <li>Customers can test the milk among our delivery executives. We will examine infront of you and show the results if you requested so.</li>
+
+        <li>In case of apartments without elevators, Ko-Milk recommends to keep our own designed pots infront of doorsteps. We collect, fill and place it again.</li>
+
+        <li>Customer have right to terminate any time. They can unsubscribe by informing us in any of our platforms (Website, mail, app, whatsapp, Call, delivery executives). The balance wallet amount will be refunded to your account within three working days.</li>
+
+        <li>Customers need to pay monthly bill in two days at month starting. If failed supply will be stopped without notice.</li>
+
+        <li>Ko-Milk gives details of milk supply on before last date of month to customers. Customers need to verify. After verification bills will be generated for payments.</li>
+
+        <li>Customers cannot use our delivery executives to their personal work at their duty time.</li>
+
+        <li>Ko-Milk will not supply any other products. Customers should not request to our delivery executives.</li>
+
+        <li>Ko-Milk employees not allowed to enter inside the house of customers. Customers need to support us to do our work as committed.</li>
+
+        <li>Customers can rise an issue regarding any matters in our operations. If proper reply not given by Ko-Milk, customers have full right to complain or sue Ko-Milk.</li>
+
+        <li>We supply pure milk as milked. Customers recommended to mix adequate water when feeding to babies.</li>
+
+        <li>The fat values of our milk is given in product page. Please be aware when you feeding for your baby.</li>
+
+        <li>Test reports of milk we supplied will be shown in our website/app. Customers can check anytime.</li>
+
+        <li>Ko-Milk intends to build plastic less society. So pouring milk in any metal vessels only.</li>
+
+        <li>Milk is delivered within four hours after milked. It is stable for six hours only. Customers need to boil it within one hour after we supply.</li>
+
+        <li>If milk is used by customers after one hour of supply, Ko-Milk is not responsible in the matters of quality. At least customers need to place it in fridge or else need to boil it.</li>
+
+        <li>Our delivery executives are not responsible for cleanliness of pots. It should be maintained by customers itself. We just pouring milk on it.</li>
+
+        <li>Customers need to inform if they want to hold the supply by any of our platforms. If not informed to hold bill will not be considered.</li>
+
+        <li>Ko-Milk will not supply more than two liters to individual customers. If order need in bulk in case of special occasions, customer need to request any of our platforms.</li>
+
+        <li>Customers have full right to sue any of operations after improper information passed to Ko-Milk management. Ko-Milk allows limited customers on a day.</li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="container my-5 terms-container">
+
+    <h3 class="main-title text-center">Terms between Ko-Milk and Vendors</h3>
+
+    <ol class="terms-list mt-4">
+      <li>Vendors should not adulterate any kind of substances in milk. Milk should be handed over to Ko-Milk as milked.</li>
+
+      <li>Cleanliness of milk handling vessels should be ensured by vendors itself.</li>
+
+      <li>Vendors should not deliver milk which is milked before more than one hour.</li>
+
+      <li>Milk should be handed to Ko-Milk on or before committed time without any delay.</li>
+
+      <li>Vendors agreement will be assigned when signing up with an advance payment for 15 days to 30 days as per negotiation.</li>
+
+      <li>Vendors will be paid for their supply monthly once, on the date of 5th.</li>
+
+      <li>Termination between any parties should be informed before one month.</li>
+
+      <li>Milk will be tested before acceptance by Ko-Milk.</li>
+
+      <li>
+        Cow Milk cost will be depends on lacto meter reading. As follows:<br><br>
+        <ul class="price-list">
+          <li>24 points : 23 Rs.</li>
+          <li>23 points : 23 Rs.</li>
+          <li>22 points : 22 Rs.</li>
+          <li>21 points : 22 Rs.</li>
+          <li>20 & 19 points : 20 Rs.</li>
+          <li>18 points : 20 Rs. (Not Accepted)</li>
+        </ul>
+      </li>
+
+      <li>
+        Buffalo Milk cost will be depends on lacto meter reading. As follows:<br><br>
+        <ul class="price-list">
+          <li>32 points : 45 Rs.</li>
+          <li>31 points : 45 Rs.</li>
+          <li>30 points : 42 Rs.</li>
+          <li>28 points : 41 Rs.</li>
+          <li>28 to 26 points : 38 Rs.</li>
+          <li>26 points : 35 Rs. (Not Accepted)</li>
+        </ul>
+      </li>
+
+      <li>Ko-Milk will regularly test the milk in lab. If any illegal adulteration found in milk, it has right to terminate and sue immediately.</li>
+
+      <li>Once the supply is regulated up to six months, the company benefits will be provided to the Vendors.</li>
+
+      <li>
+        Benefits from Ko-Milk:
+        <ul class="benefit-list">
+          <li>Loans and financial support.</li>
+          <li>Insurance on cattle.</li>
+          <li>Fodder at low cost.</li>
+          <li>Medical assistance on cattle.</li>
+        </ul>
+      </li>
+
+    </ol>
+
+  </div>
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 KO-MILK. All Rights Reserved.</p>
+    </div>
+      <div class="container">
+      <p><a href="/terms.html" style="color: #ced4da; text-decoration: none;">Terms and Conditions</a></p>
+    </div>
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h5>Your Cart</h5>
+      <button class="btn btn-light" onclick="toggleCart()">X</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5>Login</h5>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <input type="email" class="form-control mb-3" placeholder="Email">
+          <input type="password" class="form-control mb-3" placeholder="Password">
+          <button class="btn btn-primary w-100">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// -------------------------------
+// LOCAL STORAGE SETUP
+// -------------------------------
+
+// Load cart from localStorage
+function loadCart() {
+  const saved = localStorage.getItem("cartData");
+  cart = saved ? JSON.parse(saved) : [];
+}
+
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem("cartData", JSON.stringify(cart));
+}
+
+// Load login state
+function loadLogin() {
+  const state = localStorage.getItem("loginState");
+  if (state === "loggedIn") {
+    document.querySelector('.login-btn').innerHTML =
+      '<i class="bi bi-person-circle"></i> My Account';
+  }
+}
+
+// Save login state
+function saveLogin() {
+  localStorage.setItem("loginState", "loggedIn");
+}
+
+// -------------------------------
+// CART FUNCTIONALITY
+// -------------------------------
+let cart = [];
+const cartSidebar = document.getElementById('cartSidebar');
+const cartItems = document.getElementById('cartItems');
+const cartFooter = document.getElementById('cartFooter');
+const cartBadge = document.getElementById('cartBadge');
+const cartTotal = document.getElementById('cartTotal');
+const cartBtn = document.getElementById('cartBtn');
+const closeCart = document.getElementById('closeCart');
+
+// Load previous data on page load
+loadCart();
+loadLogin();
+updateCart();
+
+// Open cart sidebar
+cartBtn.addEventListener('click', () => {
+  cartSidebar.classList.add('active');
+});
+
+// Close cart sidebar
+closeCart.addEventListener('click', () => {
+  cartSidebar.classList.remove('active');
+});
+
+// Add to cart
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function () {
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'));
+
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
+
+    saveCart();  // SAVE
+    updateCart();
+
+    const notification = document.createElement('div');
+    notification.className = 'position-fixed top-0 end-0 p-3';
+    notification.style.zIndex = '11';
+    notification.innerHTML = `
+      <div class="toast show">
+        <div class="toast-header">
+          <strong class="me-auto">Added to Cart</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">${name} has been added to your cart.</div>
+      </div>`;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
+  });
+});
+
+// Update cart
+function updateCart() {
+  if (!cartBadge) return;
+
+  const totalItems = cart.reduce((t, item) => t + item.quantity, 0);
+  cartBadge.textContent = totalItems;
+
+  cartItems.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <i class="bi bi-cart-x" style="font-size: 3rem;"></i>
+        <p>Your cart is empty</p>
+      </div>`;
+    cartFooter.style.display = 'none';
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    cartItem.innerHTML = `
+      <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=100&q=80">
+      <div class="cart-item-details">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">₹${item.price}/litre</div>
+      </div>
+      <div class="cart-item-quantity">
+        <button class="quantity-btn decrease-quantity" data-index="${index}">-</button>
+        <span class="quantity-value">${item.quantity}</span>
+        <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
+      </div>
+      <div class="cart-item-total">₹${item.price * item.quantity}</div>
+      <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}">
+        <i class="bi bi-trash"></i>
+      </button>`;
+    cartItems.appendChild(cartItem);
+  });
+
+  // decrease
+  document.querySelectorAll('.decrease-quantity').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const i = this.getAttribute('data-index');
+      if (cart[i].quantity > 1) cart[i].quantity--;
+      else cart.splice(i, 1);
+      saveCart();
+      updateCart();
+    });
+  });
+
+  // increase
+  document.querySelectorAll('.increase-quantity').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const i = this.getAttribute('data-index');
+      cart[i].quantity++;
+      saveCart();
+      updateCart();
+    });
+  });
+
+  // remove
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function () {
+      cart.splice(this.getAttribute('data-index'), 1);
+      saveCart();
+      updateCart();
+    });
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  cartTotal.textContent = `₹${total}`;
+  cartFooter.style.display = 'block';
+}
+
+// -------------------------------
+// LOGIN SYSTEM
+// -------------------------------
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  if (!email || !password) return alert("Please fill in all fields");
+
+  alert("Login successful!");
+
+  saveLogin();  // SAVE LOGIN STATUS
+
+  const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+  modal.hide();
+
+  document.querySelector('.login-btn').innerHTML =
+    '<i class="bi bi-person-circle"></i> My Account';
+
+  this.reset();
+});
+
+// -------------------------------
+// SIGNUP FORM
+// -------------------------------
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById('signupName').value;
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const agreeTerms = document.getElementById('agreeTerms').checked;
+
+  if (!name || !email || !password || !confirmPassword) return alert("Fill all fields");
+  if (password !== confirmPassword) return alert("Passwords do not match");
+  if (!agreeTerms) return alert("You must accept terms");
+
+  alert("Account created! Please login.");
+  const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+  loginTab.show();
+  this.reset();
+});
+
+// -------------------------------
+// CONTACT FORM
+// -------------------------------
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert("Thank you for contacting us!");
+  this.reset();
+});
+
+// -------------------------------
+// CHECKOUT
+// -------------------------------
+document.querySelector('.checkout-btn').addEventListener('click', function () {
+  if (cart.length === 0) return alert("Your cart is empty");
+  alert("Redirecting to checkout...");
+});
+</script>
+
+</body>
+</html>

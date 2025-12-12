@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Write to Us - KO-MILK</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <style>
+    :root {
+      --primary-color: #0099cc;
+      --secondary-color: #ffcc00;
+      --accent-color: #ff3333;
+      --dark-color: #005b80;
+      --light-bg: #f8f9fa;
+      --success-color: #28a745;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--light-bg);
+      color: #333;
+    }
+    
+    /* Top Header */
+    .top-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 10px 0;
+    }
+    
+    .brand-logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    
+    .slogan {
+      font-style: italic;
+      font-size: 1rem;
+    }
+    
+    .order-btn {
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s;
+    }
+    
+    .order-btn:hover {
+      background-color: #e62e2e;
+      transform: translateY(-2px);
+    }
+    
+    .login-btn, .cart-btn {
+      background-color: transparent;
+      color: white;
+      border: 1px solid white;
+      padding: 5px 15px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s;
+      margin-left: 10px;
+    }
+    
+    .login-btn:hover, .cart-btn:hover {
+      background-color: white;
+      color: var(--primary-color);
+    }
+    
+    .cart-badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+    
+    /* Navigation Header */
+    .nav-header {
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar-nav .nav-link {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin: 0 10px;
+      transition: all 0.3s;
+      position: relative;
+    }
+    
+    .navbar-nav .nav-link:hover {
+      color: var(--primary-color);
+    }
+    
+    .navbar-nav .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      bottom: 0;
+      left: 0;
+      transition: width 0.3s;
+    }
+    
+    .navbar-nav .nav-link:hover::after {
+      width: 100%;
+    }
+    
+    .navbar-nav .nav-link.active {
+      color: var(--primary-color);
+    }
+    
+    .navbar-nav .nav-link.active::after {
+      width: 100%;
+    }
+    
+    /* Page Header */
+    .page-header {
+      background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%);
+      padding: 60px 0;
+      text-align: center;
+      border-bottom: 5px solid var(--secondary-color);
+    }
+    
+    .page-title {
+      font-weight: 800;
+      color: var(--dark-color);
+      font-size: 2.5rem;
+    }
+    
+    .breadcrumb {
+      background-color: transparent;
+      margin-bottom: 0;
+      justify-content: center;
+    }
+    
+    .breadcrumb-item a {
+      color: var(--dark-color);
+      text-decoration: none;
+    }
+    
+    .breadcrumb-item.active {
+      color: var(--primary-color);
+    }
+    
+    /* Write to Us Section */
+    .write-section {
+      padding: 80px 0;
+      background-color: white;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    
+    .section-title h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .section-title p {
+      font-size: 1.1rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .write-form {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .form-control, .form-select {
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      font-size: 1rem;
+    }
+    
+    .form-control:focus, .form-select:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.25rem rgba(0, 153, 204, 0.25);
+    }
+    
+    .form-label {
+      font-weight: 600;
+      color: var(--dark-color);
+      margin-bottom: 8px;
+    }
+    
+    .btn-submit {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-weight: 600;
+      border-radius: 5px;
+      transition: all 0.3s;
+    }
+    
+    .btn-submit:hover {
+      background-color: var(--dark-color);
+      transform: translateY(-2px);
+    }
+    
+    .contact-info {
+      background-color: #f8f9fa;
+      border-radius: 10px;
+      padding: 40px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      height: 100%;
+    }
+    
+    .info-item {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+    
+    .info-icon {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-right: 15px;
+      margin-top: 5px;
+    }
+    
+    .info-content h4 {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+    
+    .info-content p {
+      color: #555;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+    
+    .social-links {
+      margin-top: 30px;
+    }
+    
+    .social-links h4 {
+      color: var(--dark-color);
+      font-weight: 600;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      margin-right: 10px;
+      transition: all 0.3s;
+    }
+    
+    .social-icons a:hover {
+      background-color: var(--dark-color);
+      transform: translateY(-3px);
+    }
+    
+    /* FAQ Section */
+    .faq-section {
+      padding: 80px 0;
+      background-color: #f8f9fa;
+    }
+    
+    .accordion-button {
+      background-color: white;
+      color: var(--dark-color);
+      font-weight: 600;
+      box-shadow: none;
+    }
+    
+    .accordion-button:not(.collapsed) {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .accordion-button:focus {
+      box-shadow: none;
+      border-color: var(--primary-color);
+    }
+    
+    .accordion-body {
+      color: #555;
+      line-height: 1.6;
+    }
+    
+    .accordion-item {
+      border: 1px solid #e0e0e0;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+    }
+    
+    /* Cart Sidebar */
+    .cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -400px;
+      width: 400px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+      z-index: 1050;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+    }
+    
+    .cart-sidebar.active {
+      right: 0;
+    }
+    
+    .cart-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cart-items {
+      padding: 15px;
+    }
+    
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+    }
+    
+    .cart-item img {
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    
+    .cart-item-details {
+      flex-grow: 1;
+      margin-left: 15px;
+    }
+    
+    .cart-item-name {
+      font-weight: 600;
+    }
+    
+    .cart-item-price {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+    
+    .cart-item-quantity {
+      display: flex;
+      align-items: center;
+    }
+    
+    .quantity-btn {
+      background-color: #f0f0f0;
+      border: none;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    
+    .quantity-value {
+      margin: 0 10px;
+    }
+    
+    .cart-footer {
+      padding: 15px;
+      border-top: 1px solid #eee;
+    }
+    
+    .cart-total {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 15px;
+    }
+    
+    .checkout-btn {
+      background-color: var(--success-color);
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+    
+    .checkout-btn:hover {
+      background-color: #218838;
+    }
+    
+    .empty-cart {
+      text-align: center;
+      padding: 30px 15px;
+      color: #6c757d;
+    }
+    
+    /* Login Modal */
+    .modal-header {
+      background-color: var(--primary-color);
+      color: white;
+    }
+    
+    .nav-tabs .nav-link {
+      color: var(--dark-color);
+    }
+    
+    .nav-tabs .nav-link.active {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--dark-color);
+      border-color: var(--dark-color);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .page-title {
+        font-size: 2rem;
+      }
+      
+      .navbar-nav .nav-link {
+        margin: 5px 0;
+      }
+      
+      .cart-sidebar {
+        width: 100%;
+        right: -100%;
+      }
+      
+      .write-section, .faq-section {
+        padding: 50px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Header -->
+  <header class="top-header">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4">
+          <div class="brand-logo">KO-MILK</div>
+        </div>
+        <div class="col-md-4 text-center">
+          <div class="slogan">Milk as Milked, Delivered as Milked</div>
+        </div>
+        <div class="col-md-4 text-end">
+          <button class="order-btn">Order Supply Now</button>
+          <button class="login-btn" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+          <button class="cart-btn position-relative" id="cartBtn">
+            <i class="bi bi-cart"></i>
+            <span class="cart-badge" id="cartBadge">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Header -->
+  <nav class="navbar navbar-expand-lg nav-header">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="milk.html">Milk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contactus.html">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="carrers.html">Careers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="">Write to Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1 class="page-title">Write to Us</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="ind3.html">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Write to Us</li>
+        </ol>
+      </nav>
+    </div>
+  </section>
+
+  <!-- Write to Us Section -->
+  <section class="write-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Get In Touch</h2>
+        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-lg-8 mb-4 mb-lg-0">
+          <div class="write-form">
+            <form id="writeForm"  method="post" action="https://formspree.io/f/xanvylgw">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" required>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="email" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input type="tel" class="form-control" id="phone" required>
+              </div>
+              
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <select class="form-select" id="subject" required>
+                  <option value="" selected disabled>Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="order">Order Related</option>
+                  <option value="delivery">Delivery Issue</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="careers">Careers</option>
+                </select>
+              </div>
+              
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea class="form-control" id="message" rows="6" required></textarea>
+              </div>
+              
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="newsletter">
+                <label class="form-check-label" for="newsletter">
+                  Subscribe to our newsletter for updates and offers
+                </label>
+              </div>
+              
+              <div class="d-grid">
+                <button type="submit" class="btn btn-submit">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="col-lg-4">
+          <div class="contact-info">
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-geo-alt-fill"></i>
+              </div>
+              <div class="info-content">
+                <h4>Our Location</h4>
+                <p>2/182, Ko-Milk Collection Center, Sengodampalayam, Uduppam(po), Namakkal - 637019
+
+</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-telephone-fill"></i>
+              </div>
+              <div class="info-content">
+                <h4>Call/WhatsApp</h4>
+                <p>+91 87606 29867</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-envelope-fill"></i>
+              </div>
+              <div class="info-content">
+                <h4>Email Us</h4>
+                <p>admin@komilk.in</p>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="bi bi-clock-fill"></i>
+              </div>
+              <div class="info-content">
+                <h4>Business Hours</h4>
+                <p>Monday - Saturday: 6:00 AM - 8:00 PM<br>Sunday: 7:00 AM - 2:00 PM</p>
+              </div>
+            </div>
+            
+            <div class="social-links">
+              <h4>Follow Us</h4>
+              <div class="social-icons">
+                <a href="#"><i class="bi bi-facebook"></i></a>
+                <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Frequently Asked Questions</h2>
+        <p>Find answers to common questions about our products and services</p>
+      </div>
+      
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+          <div class="accordion" id="faqAccordion">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  How do I place an order for KO-MILK products?
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  You can place an order through our website, mobile app, or by calling our customer service number. Simply select the products you want, specify the quantity, and choose your preferred delivery time.
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  What areas do you deliver to?
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  We currently deliver to all areas within Namakkal city and its surrounding suburbs. We are continuously expanding our delivery network. Please check our website or contact us to confirm if we deliver to your specific location.
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  How fresh is your milk?
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Our milk is delivered fresh from local farms every morning. We ensure that the milk reaches you within hours of milking, maintaining its natural freshness and nutritional value without any processing or additives.
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  Do you offer subscription plans?
+                </button>
+              </h2>
+              <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  Yes, we offer flexible subscription plans for daily, weekly, and monthly deliveries. Subscribers enjoy discounted rates and guaranteed delivery. You can customize your subscription based on your needs and pause or cancel anytime.
+                </div>
+              </div>
+            </div>
+            
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  How can I become a vendor with KO-MILK?
+                </button>
+              </h2>
+              <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                <div class="accordion-body">
+                  If you're interested in becoming a vendor, please visit our Careers page and apply for the "Vendors Development" positions. You can also contact our vendor relations team directly at the email or phone number provided on our Contact Us page.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 KO-MILK. All Rights Reserved.</p>
+    </div>
+      <div class="container">
+      <p><a href="terms.html" style="color: #ced4da; text-decoration: none;">Terms and Conditions</a></p>
+    </div>
+
+  </footer>
+
+  <!-- Cart Sidebar -->
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h4>Your Cart</h4>
+      <button type="button" class="btn-close btn-close-white" id="closeCart"></button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <div class="empty-cart">
+        <i class="bi bi-cart-x" style="font-size: 3rem;"></i>
+        <p>Your cart is empty</p>
+      </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display: none;">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="checkout-btn">Checkout</button>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel">Welcome to KO-MILK</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-tabs" id="loginTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="signup-tab" data-bs-toggle="tab" data-bs-target="#signup" type="button" role="tab" aria-controls="signup" aria-selected="false">Sign Up</button>
+            </li>
+          </ul>
+          <div class="tab-content mt-3" id="loginTabsContent">
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+              <form id="loginForm">
+                <div class="mb-3">
+                  <label for="loginEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="loginEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="loginPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="loginPassword" required>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="rememberMe">
+                  <label class="form-check-label" for="rememberMe">Remember me</label>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+            <div class="tab-pane fade" id="signup" role="tabpanel" aria-labelledby="signup-tab">
+              <form id="signupForm">
+                <div class="mb-3">
+                  <label for="signupName" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="signupName" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupEmail" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="signupEmail" required>
+                </div>
+                <div class="mb-3">
+                  <label for="signupPassword" class="form-label">Password</label>
+                  <input type="password" class="form-control" id="signupPassword" required>
+                </div>
+                <div class="mb-3">
+                  <label for="confirmPassword" class="form-label">Confirm Password</label>
+                  <input type="password" class="form-control" id="confirmPassword" required>
+                </div>
+                <div class="mb-3 form-check">
+                  <input type="checkbox" class="form-check-input" id="agreeTerms" required>
+                  <label class="form-check-label" for="agreeTerms">I agree to the terms and conditions</label>
+                </div>
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Sign Up</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Custom JavaScript -->
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+// -------------------------------
+// LOCAL STORAGE SETUP
+// -------------------------------
+
+// Load cart from localStorage
+function loadCart() {
+  const saved = localStorage.getItem("cartData");
+  cart = saved ? JSON.parse(saved) : [];
+}
+
+// Save cart to localStorage
+function saveCart() {
+  localStorage.setItem("cartData", JSON.stringify(cart));
+}
+
+// Load login state
+function loadLogin() {
+  const state = localStorage.getItem("loginState");
+  if (state === "loggedIn") {
+    document.querySelector('.login-btn').innerHTML =
+      '<i class="bi bi-person-circle"></i> My Account';
+  }
+}
+
+// Save login state
+function saveLogin() {
+  localStorage.setItem("loginState", "loggedIn");
+}
+
+// -------------------------------
+// CART FUNCTIONALITY
+// -------------------------------
+let cart = [];
+const cartSidebar = document.getElementById('cartSidebar');
+const cartItems = document.getElementById('cartItems');
+const cartFooter = document.getElementById('cartFooter');
+const cartBadge = document.getElementById('cartBadge');
+const cartTotal = document.getElementById('cartTotal');
+const cartBtn = document.getElementById('cartBtn');
+const closeCart = document.getElementById('closeCart');
+
+// Load previous data on page load
+loadCart();
+loadLogin();
+updateCart();
+
+// Open cart sidebar
+cartBtn.addEventListener('click', () => {
+  cartSidebar.classList.add('active');
+});
+
+// Close cart sidebar
+closeCart.addEventListener('click', () => {
+  cartSidebar.classList.remove('active');
+});
+
+// Add to cart
+document.querySelectorAll('.add-to-cart').forEach(button => {
+  button.addEventListener('click', function () {
+    const name = this.getAttribute('data-name');
+    const price = parseInt(this.getAttribute('data-price'));
+
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity++;
+    } else {
+      cart.push({ name, price, quantity: 1 });
+    }
+
+    saveCart();  // SAVE
+    updateCart();
+
+    const notification = document.createElement('div');
+    notification.className = 'position-fixed top-0 end-0 p-3';
+    notification.style.zIndex = '11';
+    notification.innerHTML = `
+      <div class="toast show">
+        <div class="toast-header">
+          <strong class="me-auto">Added to Cart</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">${name} has been added to your cart.</div>
+      </div>`;
+    document.body.appendChild(notification);
+    setTimeout(() => notification.remove(), 3000);
+  });
+});
+
+// Update cart
+function updateCart() {
+  if (!cartBadge) return;
+
+  const totalItems = cart.reduce((t, item) => t + item.quantity, 0);
+  cartBadge.textContent = totalItems;
+
+  cartItems.innerHTML = '';
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = `
+      <div class="empty-cart">
+        <i class="bi bi-cart-x" style="font-size: 3rem;"></i>
+        <p>Your cart is empty</p>
+      </div>`;
+    cartFooter.style.display = 'none';
+    return;
+  }
+
+  cart.forEach((item, index) => {
+    const cartItem = document.createElement('div');
+    cartItem.className = 'cart-item';
+    cartItem.innerHTML = `
+      <img src="https://images.unsplash.com/photo-1550583724-b2692b85b150?auto=format&fit=crop&w=100&q=80">
+      <div class="cart-item-details">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-price">₹${item.price}/litre</div>
+      </div>
+      <div class="cart-item-quantity">
+        <button class="quantity-btn decrease-quantity" data-index="${index}">-</button>
+        <span class="quantity-value">${item.quantity}</span>
+        <button class="quantity-btn increase-quantity" data-index="${index}">+</button>
+      </div>
+      <div class="cart-item-total">₹${item.price * item.quantity}</div>
+      <button class="btn btn-sm btn-outline-danger remove-item" data-index="${index}">
+        <i class="bi bi-trash"></i>
+      </button>`;
+    cartItems.appendChild(cartItem);
+  });
+
+  // decrease
+  document.querySelectorAll('.decrease-quantity').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const i = this.getAttribute('data-index');
+      if (cart[i].quantity > 1) cart[i].quantity--;
+      else cart.splice(i, 1);
+      saveCart();
+      updateCart();
+    });
+  });
+
+  // increase
+  document.querySelectorAll('.increase-quantity').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const i = this.getAttribute('data-index');
+      cart[i].quantity++;
+      saveCart();
+      updateCart();
+    });
+  });
+
+  // remove
+  document.querySelectorAll('.remove-item').forEach(btn => {
+    btn.addEventListener('click', function () {
+      cart.splice(this.getAttribute('data-index'), 1);
+      saveCart();
+      updateCart();
+    });
+  });
+
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  cartTotal.textContent = `₹${total}`;
+  cartFooter.style.display = 'block';
+}
+
+// -------------------------------
+// LOGIN SYSTEM
+// -------------------------------
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
+
+  if (!email || !password) return alert("Please fill in all fields");
+
+  alert("Login successful!");
+
+  saveLogin();  // SAVE LOGIN STATUS
+
+  const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
+  modal.hide();
+
+  document.querySelector('.login-btn').innerHTML =
+    '<i class="bi bi-person-circle"></i> My Account';
+
+  this.reset();
+});
+
+// -------------------------------
+// SIGNUP FORM
+// -------------------------------
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById('signupName').value;
+  const email = document.getElementById('signupEmail').value;
+  const password = document.getElementById('signupPassword').value;
+  const confirmPassword = document.getElementById('confirmPassword').value;
+  const agreeTerms = document.getElementById('agreeTerms').checked;
+
+  if (!name || !email || !password || !confirmPassword) return alert("Fill all fields");
+  if (password !== confirmPassword) return alert("Passwords do not match");
+  if (!agreeTerms) return alert("You must accept terms");
+
+  alert("Account created! Please login.");
+  const loginTab = new bootstrap.Tab(document.getElementById('login-tab'));
+  loginTab.show();
+  this.reset();
+});
+
+// -------------------------------
+// CONTACT FORM
+// -------------------------------
+document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  alert("Thank you for contacting us!");
+  this.reset();
+});
+
+// -------------------------------
+// CHECKOUT
+// -------------------------------
+document.querySelector('.checkout-btn').addEventListener('click', function () {
+  if (cart.length === 0) return alert("Your cart is empty");
+  alert("Redirecting to checkout...");
+});
+</script>
+
+</body>
+</html>
